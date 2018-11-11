@@ -11,7 +11,6 @@ def crop(img_data, dir_name, file_name):
     """
     :todo: Получение адреса изображения и json из командной строки
     :todo: Не перезаписывать существующее изображение
-    :todo: Создание поддиректории для изображения, извлечение адреса из пути
     :param img_data:
     :param file_name:
     :return:
@@ -31,7 +30,7 @@ def crop(img_data, dir_name, file_name):
     if dir_name:
         dir_name = 'images/{}'.format(dir_name)
         if not os.path.exists(dir_name):
-            os.mkdir(dir_name)
+            os.makedirs(dir_name, 0o777)
         img_path = '{dir_name}/{file_name}.png'.format(dir_name=dir_name, file_name=file_name)
     else:
         img_path = 'images/{}.png'.format(file_name)
