@@ -1,8 +1,5 @@
 import json
-# from os import path, mkdir
 import os
-# os.mkdir( path, 0755 );
-# os.path.dirname(path) - возвращает имя директории пути pat
 from PIL import Image
 json_path = 'main_atlas.json'
 img_path = 'main_atlas.png'
@@ -44,10 +41,8 @@ if __name__ == '__main__':
         img = Image.open(img_path)
         for frame_name in data['frames']:
             dir_name = os.path.dirname(frame_name)
-            # print(dir_name)
-            file_name = os.path.splitext(frame_name)[0]
-            file_name = os.path.split(file_name)[-1]
-            # print(file_name)
+            file_name = os.path.splitext(frame_name)[0] # Получаем имя файла без расширения
+            file_name = os.path.split(file_name)[-1] # Отделение имени файла от названия директории
             img_data = data["frames"].get(frame_name)
             crop(img_data, dir_name, file_name)
             # cropped_img.show() # Показать изображение
