@@ -1,0 +1,6 @@
+env/
+.hg/
+images/
+.idea/
+main_atlas.json
+main_atlas.png
