@@ -2,5 +2,6 @@ env/
 .hg/
 images/
 .idea/
+__pycache__
 main_atlas.json
 main_atlas.png
