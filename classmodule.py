@@ -1,5 +1,5 @@
 import json
-import os, sys
+import os
 from PIL import Image
 import argparse
 
@@ -58,17 +58,21 @@ class ConvertAtlas:
                     img_data = data["frames"].get(frame_name)
                     self.crop(img_data, dir_name, file_name)
 
-        elif image_format == 'sprite' or type == 'spritesheet':
+        elif image_format == 'sprite' or image_format == 'spritesheet':
             width = args.width
             height = args.height
             count = args.count
 
-            if not width or not height or not count:
+            if not height and width:
+                height = width
+
+            if not width or not count:
                 print('Error! Spritesheets format required more atrguments: width, height and count')
             else:
                 self.crop_spritesheet(width, height, count)
         else:
             print('Error! Unknown format of the image')
+
 
     def crop(self, img_data, dir_name, file_name):
         """
@@ -108,6 +112,8 @@ class ConvertAtlas:
 
         if not os.path.exists('images'):
             os.mkdir('images', mode=0o775)
+
+        print(self.img.size)
 
         for i in range(count):
             left = width*i
