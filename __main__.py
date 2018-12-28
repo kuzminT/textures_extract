@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python3
 from classmodule import ConvertAtlas
 
 # Объект с координатами, шириной и высотой
